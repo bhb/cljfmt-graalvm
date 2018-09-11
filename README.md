@@ -7,7 +7,7 @@ A Clojure code formatter using cljfmt built with graalvm.
 ## Usage
 
 ```sh
-./cljfmt source-file.clj
+./cljfmt source-file1.clj source-file2.clj
 ```
 
 ## Build
@@ -16,17 +16,17 @@ For linux, a binary may be downloaded directly from [Gitlab](https://gitlab.com/
 To build the binary yourself, here are some instructions.
 
 - Install [lein](https://leiningen.org/)
-- Download [GraalVM](http://www.graalvm.org/downloads/) for your machine. You will need the EE version if you're using MacOS.
+- Download [GraalVM](http://www.graalvm.org/downloads/) for your machine. On MacOS, CE 1.0.0-rc6 works.
 - Set `JAVA_HOME` to the GraalVM home directory, e.g.
 
 ```sh
-export JAVA_HOME=~/Downloads/graalvm-1.0.0-rc1/Contents/Home
+export JAVA_HOME=~/Downloads/graalvm-ce-1.0.0-rc6/Contents/Home
 ```
     
 - Set the `PATH` to use GraalVM's binaries, e.g.
 
 ```sh
-export PATH=$PATH:~/Downloads/graalvm-1.0.0-rc1/Contents/Home/bin
+export PATH=$PATH:~/Downloads/graalvm-ce-1.0.0-rc6/Contents/Home/bin
 ```
 
 - Create the uberjar:
@@ -38,7 +38,7 @@ lein uberjar
 - Finally, create the binary:
 
 ``` sh
-native-image -jar target/cljfmt-graalvm-0.1.0-SNAPSHOT-standalone.jar -H:Name="cljfmt"
+native-image -H:+ReportUnsupportedElementsAtRuntime -jar target/cljfmt-graalvm-0.1.0-SNAPSHOT-standalone.jar -H:Name="cljfmt"
 ```
 
 
