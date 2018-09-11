@@ -8,8 +8,6 @@
                  [org.clojure/tools.cli "0.3.7"]
                  [cljfmt "0.5.7"]]
 
-  :plugins [[lein-ancient "0.6.15"]]
-
   :main cljfmt-graalvm.core
 
   :profiles {:uberjar {:jvm-opts ["-Dclojure.compiler.direct-linking=true"]
